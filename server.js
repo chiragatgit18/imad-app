@@ -6,9 +6,9 @@ var app = express();
 app.use(morgan('combined'));
 
 var content = {
-    title: 'Article One';
-    date: '21 jan, 2018';
-    heading: 'article one';
+    title: 'Article One',
+    date: '21 jan, 2018',
+    heading: 'article one',
     Content:`<p>
                     This is article One.This is article One.This is article One.This is article One.This is article One.
                     This is article One.This is article One.This is article One.This is article One.This is article One
@@ -23,7 +23,7 @@ var content = {
                     This is article One.This is article One.This is article One.This is article One.This is article One.
                     This is article One.This is article One.This is article One.This is article One.This is article One
                     This is article OneThis is article OneThis is article OneThis is article OneThis is article OneThis is article One
-                </p>`;
+                </p>`,
     
 };
 
