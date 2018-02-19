@@ -5,7 +5,7 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var content = {
+var articleOne = {
     title: 'Article One',
     date: '21 jan, 2018',
     heading: 'article one',
@@ -32,7 +32,7 @@ function createTemplate(data)
     var title=data.title;
     var heading=data.heading;
     var date=data.date;
-    var Content=data.Content;
+    var content=data.Content;
     
     
         var htmltemplate=
@@ -53,9 +53,9 @@ function createTemplate(data)
                         ${date};
                     </div>
                     <div>
-                        ${Content};
+                        ${content};
                     </div>
-                    </div>
+                </div>
             </body>
         </html>`;
         return htmltemplate;
@@ -76,7 +76,7 @@ app.get('/ui/madi.png', function (req, res) {
 
 
 app.get('/article-one', function (req, res) {
-  res.send(createTemplate(article-one));
+  res.send(createTemplate(articleOne));
 });
 
 app.get('/article-Two', function (req, res) {
