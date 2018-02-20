@@ -20,7 +20,7 @@ button.onClick=function()
                 span.innerHTML=counter.toString();
                 
             }
-        }f
+        }
             
     };
     
