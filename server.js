@@ -93,7 +93,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/counter', function (req, res) {
-  res.sendFile(path.join('counter'));
+  res.sendFile(path.join(counter));
 });
 
 app.get('/ui/style.css', function (req, res) {
