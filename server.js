@@ -88,6 +88,15 @@ function createTemplate(data)
 }
 
 
+var Pool=require('pg').Pool;
+
+var config={
+    user:'chiraggambha15197',
+    database:'chiraggambha15197',
+    host:'db.imad.hasura-app.io',
+    password:process.env.DB_PASSWORD
+    
+};
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -96,6 +105,23 @@ var counter=0;
 app.get('/couner', function (req, res) {
     counter=counter+1;
   res.send(counter.toString());
+});
+
+var pool=new Pool(config);
+
+app.get('/test-db', function (req,res){
+   
+   pool.query(SELECT *FROM article, function(err,result)
+   {
+      if(err)
+      {
+          res.status(500).send(err.toString());
+      }
+      else
+      {
+          res.send(JSON.stringify(result));
+      }
+   }); 
 });
 
 
