@@ -4,6 +4,67 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
+var articles={
+        articleOne:{title: 'Article - Three | Chirag Gambha',
+            date:'april 17,2018',
+            heading:'ArticleOne',
+            content:`<p>
+                    This is article One.This is article One.This is article One.This is article One.This is article One.
+                    This is article One.This is article One.This is article One.This is article One.This is article One.
+                    This is article One.This is article One.This is article One.This is article One.This is article One.
+                    </p>`},
+                    
+        articleTwo:{
+            title: 'Article - Two | Chirag Gambha',
+            date:'april 17,2018',
+            heading:'ArticleTwo',
+            content:`<p>
+                    This is article Two.This is article Two.This is article Two.This is article Two.This is article Two.
+                    This is article Two.This is article Two.This is article Two.This is article Two.This is article Two.
+                    This is article Two.This is article Two.This is article Two.This is article Two.This is article Two.
+                    </p>`},
+                    
+        articleThree:{
+            title: 'Article - Three | Chirag Gambha',
+            date:'april 17,2018',
+            heading:'ArticleThree',
+            content:`<p>
+                    This is article Three.This is article Three.This is article Three.This is article Three.This is article Three.
+                    This is article Three.This is article Three.This is article Three.This is article Three.This is article Three.
+                    This is article Three.This is article Three.This is article Three.This is article Three.This is article Three.
+                    <p>`}
+            };
+
+function createTemplate(data){
+        var title=data.title;
+        var heading=data.heading;
+        var date=data.date;
+        var content=data.content;
+        
+        var htmlTemplate=`<html>
+            <head>
+                <title>${title};</title>
+                <meta name="viweport" content="width=device-width, initial-scale=1" />
+                <link href="/ui/style.css" rel="stylesheet"/>
+            </head>
+            <body>
+                <div class="container">
+                    <div>
+                        <a href="/">home</a>
+                    </div>
+                    <hr/>
+                    <h3>${heading};</h3>
+                    <div>
+                        ${date};
+                    </div>
+                    <div>
+                        ${content};
+                    </div>
+                </div>
+            </body>
+        </html>`;
+        return htmlTemplate;
+}
 
 var articles={
 
@@ -97,6 +158,24 @@ var config={
     password:process.env.DB_PASSWORD
     
 };
+
+/*
+// response a html template on requets on Article One
+app.get('/artice-one',function(req,res){
+ res.send(createTemplate(articleOne));   
+});
+
+// response a html template on requets on Article Two
+app.get('/artice-one',function(req,res){
+ res.send(createTemplate(articleTwo));   
+});
+
+// response a html template on requets on Article Three
+app.get('/artice-one',function(req,res){
+ res.send(createTemplate(articleThree));   
+});
+*/
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
